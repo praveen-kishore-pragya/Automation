@@ -65,7 +65,7 @@ time.sleep(1)
 # driver.find_element(By.XPATH,'//*[@id="unified-masthead"]/div[1]/div[1]/div[2]/button[2]/svg').click()  --- NOT ABLE TO DO
 
 #filter the laptops --> precaution so NO other type of items show up
-driver.find_element(By.XPATH,'//*[@id="refinement-36679"]').click()
+driver.find_element(By.NAME,"36679").click()
 
 # select the product
 driver.find_element(By.XPATH,'//*[@id="d569946win9"]/section[1]/h3/a').click()
@@ -93,14 +93,23 @@ time.sleep(20)
 # else:
 #     print("Product is currently not deliverable")
 
+
+#handles switching of tabs
+# window_handles[1] is a second window
+driver.switch_to.window(driver.window_handles[1])
+  
+# prints the title of the second window
+# print("Second window title = " + driver.title)
+
+
 #click buy now to go to checkout
-driver.find_element(By.XPATH,'//*[@id="bundle-slide"]').click()
+driver.find_element(By.XPATH,"/html/body/div[4]/main/div[3]/div[1]/div[1]/div[3]/button").click()
 time.sleep(1)
 
 #enter details before pay now
 #enter email
-driver.find_element(By.XPATH,'//*[@id="customer-email"]').send_keys(email)
-
+driver.find_element(By.NAME,"username").send_keys(email)
+time.sleep(1)
 #enter personal details
 firstName = "kojapov"
 lastName = "breazeim"
